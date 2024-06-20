@@ -1,6 +1,6 @@
 
 /** @type {import('jest').Config} */
-const config = {
+module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts',
     '!<rootDir>/src/main/**',
@@ -23,5 +23,3 @@ const config = {
   // clearMocks: true,
   // setupFiles: ['dotenv/config']
 }
-
-module.exports = config;
