@@ -1,1 +1,1 @@
-export * from './validateCpf.test'
+export * from './validateCpf'
