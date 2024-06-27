@@ -11,16 +11,16 @@ export interface AccountDAO {
 export class AccountDAODatabase implements AccountDAO {
   async getAccountByEmail (email: string) {
     const connection = pgp()('postgres://tiagoluis:102030@localhost:5432/app')
-    const [acc] = await connection.query('select * from taxi_app.account where email = $1', [email])
+    const [account] = await connection.query('select * from taxi_app.account where email = $1', [email])
     await connection.$pool.end()
-    return acc
+    return account
   }
 
   async getAccountById (accountId: string) {
     const connection = pgp()('postgres://tiagoluis:102030@localhost:5432/app')
-    const [acc] = await connection.query('select * from taxi_app.account where account_id = $1', [accountId])
+    const [account] = await connection.query('select * from taxi_app.account where account_id = $1', [accountId])
     await connection.$pool.end()
-    return acc
+    return { ...account, ...{ carPlate: account.car_plate }}
   }
 
   async saveAccount (account: any) {
@@ -39,16 +39,14 @@ export class AccountDAOMemory implements AccountDAO {
   }
 
   async getAccountByEmail(email: string): Promise<any> {
-    const account = this.accounts.find((account: any) => account.email === email)
-    return account
+    return this.accounts.find((account: any) => account.email === email)
   }
 
   async getAccountById(accountId: string): Promise<any> {
-    const account = this.accounts.find((account: any) => account.accountId === accountId)
-    return account
+    return this.accounts.find((account: any) => account.accountId === accountId)
   }
 
-  async saveAccount(account: string): Promise<any> {
+  async saveAccount(account: any): Promise<void> {
     this.accounts.push(account)
   }
 }

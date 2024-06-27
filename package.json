@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "",
   "scripts": {
-    "start": "nodemon account/src/driver/api.ts",
+    "start": "nodemon account/src/driver.ts",
     "test": "jest --passWithNoTests --no-cache --runInBand",
     "test:watch": "npm test -- --watch",
     "test:staged": "npm test -- --findRelatedTests",

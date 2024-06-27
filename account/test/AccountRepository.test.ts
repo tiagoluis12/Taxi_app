@@ -1,5 +1,5 @@
 import crypto from 'crypto'
-import { AccountDAODatabase } from '../src/infra/repository/AccountDAO'
+import { AccountDAODatabase } from '@/src/resource'
 
 //Integration Test
 

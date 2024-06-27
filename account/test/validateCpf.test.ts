@@ -1,4 +1,4 @@
-import { validate } from '../src/domain/vo/validateCpf'
+import { validateCpf } from '../src/validateCpf'
 
 test.each([
   '97456321558',
@@ -6,7 +6,7 @@ test.each([
   '87748248800'
 ])
   ('Should test if a CPF is valid %s', function (cpf: string) {
-    const isValid = validate(cpf)
+    const isValid = validateCpf(cpf)
   expect(isValid).toBe(true)
 })
 
@@ -19,6 +19,6 @@ test.each([
   '11111111111'
 ])
   ('Should test if a CPF is invalid %s', function (cpf: any) {
-    const isValid = validate(cpf)
+    const isValid = validateCpf(cpf)
   expect(isValid).toBe(false)
 })
